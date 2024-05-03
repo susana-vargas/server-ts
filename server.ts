@@ -7,6 +7,7 @@ const PORT: number = 3000;
 // app.get('/', (req: Request, res: Response) => {
 //   res.send('¡Hola, mundo!');
 // });
+app.use(express.json());
 
 app.use('/', catsRouter);
 
