@@ -1,6 +1,11 @@
 import { Request, Response, Router } from 'express';
+const { v4: uuidv4 } = require('uuid');
 
 const catsRouter = Router();
+
+const generateId = () => {
+  return uuidv4();
+};
 
 let cats = [
   {
@@ -19,11 +24,33 @@ catsRouter.get('/', (req: Request, res: Response) => {
   res.send(cats);
 });
 
-catsRouter.delete('/:id', (req: Request, res: Response) => {
-  const id = req.params.id;
-  cats = cats.filter(cat => cat.id !== id);
+catsRouter.get('/:id', (req, res) => {
+  const id =(req.params.id);
+  const cat = cats.find((cat) => cat.id === id);
 
-  res.end('Se Elimino el recurso');
+  if (cat) {
+    res.json(cat);
+  } else {
+    res.status(404).end();
+  }
+
+});
+
+catsRouter.post('/', (req,res) => {
+  const body = req.body;
+
+  if (!body.name || !body.age) {
+    return res.status(400).json( { error: 'nombre y edad son necesarios' } );
+  }
+
+  const newCat = {
+    id: generateId(),
+    name: body.name,
+    age: body.age,
+  };
+
+  cats = cats.concat(newCat);
+  res.json(newCat);
 });
 
 catsRouter.put('/:id', (req: Request, res: Response) => {
@@ -37,5 +64,13 @@ catsRouter.put('/:id', (req: Request, res: Response) => {
   cats[catIndex] = updatedCat;
   res.json(updatedCat);
 });
+
+catsRouter.delete('/:id', (req: Request, res: Response) => {
+  const id = req.params.id;
+  cats = cats.filter(cat => cat.id !== id);
+
+  res.end('Se Elimino el recurso');
+});
+
 
 export default catsRouter;
