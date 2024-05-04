@@ -14,6 +14,10 @@
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.8",
     "@types/uuid": "^9.0.8",
+<<<<<<< HEAD
+=======
+    "eslint": "^6.8.0",
+>>>>>>> 3fa02ba77e32023e8057e7eb181df2a05b945a97
     "express": "^4.19.2",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",

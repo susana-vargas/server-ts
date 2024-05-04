@@ -1,18 +1,18 @@
-import { dogRepository } from "../repositorys/dogs.repository";
+import {DogRepository } from "../repositorys/dogs.repository";
 
 export class DeleteDogsService {
-  repository: typeof dogRepository
+  private readonly repository: DogRepository;
 
-  constructor(repository: typeof dogRepository) {
-    this.repository = repository
+  constructor(repository: DogRepository) {
+    this.repository = repository;
   }
 
-  delete(id: string) {
-    const dog = dogRepository.getOne(id);
+  execute(id: string) {
+    const dog =this.repository.getOne(id);
 
     if (!dog) {
       throw new Error('perro no encontrado');
-    }
+    };
 
     this.repository.delete(id);
   }
