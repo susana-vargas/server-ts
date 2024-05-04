@@ -1,18 +1,18 @@
-import { catRepository } from "../repositorys/cats.repository"
+import { CatRepository, catRepository } from "../repositorys/cats.repository";
 
 export class DeleteCatsService {
-  repository: typeof catRepository
+  private readonly repository: CatRepository;
 
-  constructor(repository: typeof catRepository) {
-    this.repository = repository
+  constructor(repository: CatRepository) {
+    this.repository = repository;
   }
 
-  delete(id: string) {
+  execute(id: string) {
     const cat = catRepository.getOne(id);
 
     if (!cat) {
       throw new Error('Gato no encontrado');
-    }
+    };
 
     this.repository.delete(id);
   }

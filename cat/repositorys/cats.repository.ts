@@ -1,4 +1,4 @@
-class CatRepository {
+export class CatRepository {
   cats = [{
     id: 'b432dca9-e364-4184-94a7-8f0016c902be',
     name: 'Fluffy',

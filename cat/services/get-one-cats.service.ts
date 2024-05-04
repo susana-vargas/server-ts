@@ -1,13 +1,13 @@
-import { catRepository } from "../repositorys/cats.repository"
+import { CatRepository } from "../repositorys/cats.repository";
 
 export class GetOneCatsService {
-  repository: typeof catRepository
+  private readonly repository: CatRepository;
 
-  constructor(repository: typeof catRepository) {
-    this.repository = repository
+  constructor(repository: CatRepository) {
+    this.repository = repository;
   }
 
-  getOne(id: string) {
+  execute(id: string) {
     return this.repository.getOne(id);
   }
 }
