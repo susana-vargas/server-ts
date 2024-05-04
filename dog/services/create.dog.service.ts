@@ -1,13 +1,13 @@
-import { dogRepository} from "../repositorys/dogs.repository";
+import {DogRepository} from "../repositorys/dogs.repository";
 
 export class CreateDogsSevice{
-    repository: typeof dogRepository
+    private readonly  repository: DogRepository
 
-    constructor(repository: typeof dogRepository){
+    constructor(repository: DogRepository){
         this.repository = repository
     }
 
-    create(dog: any){
+     execute(dog: any){
         return this.repository.createOne(dog)
     }
 }

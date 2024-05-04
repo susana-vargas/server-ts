@@ -1,6 +1,4 @@
-import { UpdatedDogService } from "../services/ update.dogs.service";
-
-class DogRepository {
+export class DogRepository {
     dogs = [{
       id: '17368934-4ff5-4efb-94b1-7a19576bc793',
       name: 'apolo',
@@ -21,35 +19,31 @@ class DogRepository {
 
     getOne(id: string){ 
      const dog = this.dogs.find((dog) => dog.id === id)
-     return dog
+      return dog
     }
 
     createOne(dog: any) {
-        this.dogs.push(dog);
+      this.dogs.push(dog);
         return dog;
     }
 
     update(id: string, update: any){
-        const dogIndx = this.dogs.findIndex((dog) => dog.id === id)
-
+      const dogIndx = this.dogs.findIndex((dog) => dog.id === id)
         if(dogIndx === -1){
             throw new Error ('perro no encontrado')
-        }
-         
-        this.dogs[dogIndx] = update;
-        return update
+        } 
+         this.dogs[dogIndx] = update;
+          return update
 
     }
 
     delete(id: string) {
-        const dogIndx= this.dogs.findIndex((dog) => dog.id === id);
-    
+      const dogIndx= this.dogs.findIndex((dog) => dog.id === id);
         if (dogIndx === -1) {
           throw new Error('perro no encontrado en el repositorio');
-        }
-    
-        this.dogs.splice(dogIndx, 1);
-        return 'Se elimino el recurso';
+       }
+         this.dogs.splice(dogIndx, 1);
+          return 'Se elimino el recurso';
       }
     
 }
