@@ -1,6 +1,8 @@
 import express, { Express, Request, Response } from 'express';
-import catsRouter from './cat/controllers/cats';
+
+import catsRouter from './cat/cats';
 import dogsRouter from './dog/controllers/dogs';
+
 
 const app: Express = express();
 const PORT: number = 3000;
