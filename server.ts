@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 
 import catsRouter from './cat/cats.controller';
-import dogsRouter from './dog/controllers/dogs';
+import dogsRouter from './dog/dogs.controller';
 
 
 const app: Express = express();
